@@ -52,7 +52,7 @@ class Board extends Component {
         const validIndex = this.state.validIndexes.indexOf(randomNumber);
         const item = this.state.items[validIndex];
         this.removeIndex(validIndex)
-        return { ...item, index: validIndex };
+        return { ...item, index: this.state.validIndexes[validIndex] };
     }
     returnItem = (index) => {
         this.setState({

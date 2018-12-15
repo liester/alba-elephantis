@@ -61,7 +61,7 @@ class Tile extends Component {
 
     flipToBack = () => {
         let item = this.props.getRandomItem();
-        console.log(`Got Item: ${JSON.stringify}`)
+        console.log(`Got Item: ${JSON.stringify(item)}`)
         this.setState({
             isFlipped: true,
             item: item
