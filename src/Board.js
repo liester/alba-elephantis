@@ -22,7 +22,7 @@ class Board extends Component {
         super(props)
         this.state = {
             items: itemsJson,
-            validIndexes: [0, 1, 2, 3, 4]
+            validIndexList: [0, 1, 2, 3, 4]
         }
 
     }
@@ -38,25 +38,42 @@ class Board extends Component {
         )
     }
 
-    removeIndex(index){
-        let indexCopy =  [...this.state.validIndexes];
+    removeAtIndex = (index) => {
+        let indexCopy = [...this.state.validIndexList];
         indexCopy.splice(index, 1);
         this.setState({
-            validIndexes: indexCopy
+            validIndexList: indexCopy
         })
     }
 
+    getRandomNumber(min, max){
+        let random = Math.floor(Math.random() * (max - min) + min);
+        return random;
+    }
+
+    getItem(itemIndex){
+        return this.state.itemsJson[itemIndex];
+    }
+
     getRandomItem = () => {
-        let max = this.state.validIndexes.length - 1;
-        let randomNumber = Math.floor(Math.random() * (max));
-        const validIndex = this.state.validIndexes.indexOf(randomNumber);
-        const item = this.state.items[validIndex];
-        this.removeIndex(validIndex)
-        return { ...item, index: this.state.validIndexes[validIndex] };
+        let randomNumber = this.getRandomNumber(0, this.state.validIndexList.length)
+        console.log(`Random Number:${randomNumber}`)
+
+        let itemIndex = this.state.validIndexList[randomNumber];
+        
+        console.log(`Item Index: ${itemIndex}`);
+
+        let item = this.state.items[itemIndex];
+
+        console.log(`Item: ${JSON.stringify(item)}`)
+
+        this.removeAtIndex(randomNumber)
+
+        return { ...item, index: itemIndex };
     }
     returnItem = (index) => {
         this.setState({
-            validIndexes: [...this.state.validIndexes, index]
+            validIndexList: [...this.state.validIndexList, index]
         })
     }
 
