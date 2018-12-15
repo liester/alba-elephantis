@@ -6,7 +6,7 @@ import Test from './Test'
 
 const styles = theme => ({
     board: {
-        backgroundColor: 'skyblue',
+        background: 'linear-gradient(#007acc, #b3e0ff)',
         padding: 0,
         minHeight: '99vh',
         maxHeight: '100%',
@@ -153,7 +153,7 @@ class Board extends Component {
 
         return (
             <div>
-                <div className={classes.board}>
+                <div className={classes.board} >
                    {this.state.tiles.map(this.eachTile)}
                 </div>
                 <Test></Test>

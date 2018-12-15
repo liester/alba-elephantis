@@ -26,7 +26,7 @@ const styles = theme => ({
         display: 'flex',
         color: 'white',
         justifyContent: 'center',
-        alignContent: 'center',
+        alignItems: 'center',
         fontSize: '6vh',
         cursor: 'pointer',
     },
@@ -35,6 +35,14 @@ const styles = theme => ({
         bottom: 0,
         left: 0,
     },
+    backTitleText: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        color: 'black',
+        textAlign: 'center',
+        fontWeight: 'bold',
+    }
 })
 
 class Tile extends Component {
@@ -61,11 +69,11 @@ class Tile extends Component {
             >
                 <FrontSide className={classes.tile}>
                     <div className={classes.frontNumBackground}>
-                        <span className={classes.frontNumText}>{this.props.index + 1}</span>
+                        <span className={classes.frontNumText}>23</span>
                     </div>
                 </FrontSide>
                 <BackSide className={classes.tile}>
-                    {this.props.title}
+                    <span className={classes.backTitleText}>Trip for 2 to Walmart in Council Bluffs</span>
                     <br />
                     <input type="checkbox" className={classes.backCheckbox}></input>
                 </BackSide>
