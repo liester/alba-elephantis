@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import classnames from 'classnames'
 import Flippy, {FrontSide, BackSide} from 'react-flippy'
-import Help from '@material-ui/icons/Help'
 
 const styles = theme => ({
     tile: {
@@ -28,8 +26,15 @@ const styles = theme => ({
         display: 'flex',
         color: 'white',
         justifyContent: 'center',
+        alignContent: 'center',
         fontSize: '7vh',
-    }
+        cursor: 'pointer',
+    },
+    backCheckbox: {
+        postion: 'absolute',
+        bottom: 0,
+        left: 0,
+    },
 })
 
 class Tile extends Component {
@@ -41,6 +46,10 @@ class Tile extends Component {
     
     testClass = () => {
         alert('go')
+    }
+
+    stopFlippy = () => {
+        Flippy.flipOnClick = false
     }
     
     render() {
@@ -61,6 +70,8 @@ class Tile extends Component {
                 </FrontSide>
                 <BackSide className={classes.tile}>
                     {this.props.children}
+                    <br />
+                    <input type="checkbox" className={classes.backCheckbox}></input>
                 </BackSide>
             </Flippy>
         )
