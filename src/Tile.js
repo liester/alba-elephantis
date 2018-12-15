@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import Flippy, {FrontSide, BackSide} from 'react-flippy'
+import Flippy, { FrontSide, BackSide } from 'react-flippy'
 
 const styles = theme => ({
     tile: {
@@ -46,34 +46,54 @@ const styles = theme => ({
 })
 
 class Tile extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            isFlipped: false,
+            item: {}
+        }
+    }
 
     static propTypes = {
-        item: PropTypes.object.isRequired,
+        label: PropTypes.object.isRequired,
         classes: PropTypes.object.isRequired,
     };
 
-    increaseCardNum = () => {
-
+    flipToBack = () => {
+        let item = this.props.getRandomItem();
+        console.log(`Got Item: ${JSON.stringify}`)
+        this.setState({
+            isFlipped: true,
+            item: item
+        })
     }
-    
+
+    flipToFront = () => {
+        console.log(`Returning index: ${this.state.item.index}`)
+        this.props.returnItem(this.state.item.index);
+        this.setState({
+            isFlipped: false
+        })
+    }
+
+
+
     render() {
-        
-        const { classes } = this.props;
-        
+
+        const { classes, label } = this.props;
+
         return (
             <Flippy
-                flipOnHover={false} // default false
-                flipOnClick={true} // default false
-                flipDirection="horizontal" // horizontal or vertical
-                ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
+                flipDirection="horizontal"
+                isFlipped={this.state.isFlipped}
             >
-                <FrontSide className={classes.tile}>
+                <FrontSide className={classes.tile} onClick={this.flipToBack}>
                     <div className={classes.frontNumBackground}>
-                        <span className={classes.frontNumText}>23</span>
+                        <span className={classes.frontNumText}>{label}</span>
                     </div>
                 </FrontSide>
-                <BackSide className={classes.tile}>
-                    <span className={classes.backTitleText}>Trip for 2 to Walmart in Council Bluffs</span>
+                <BackSide className={classes.tile} onClick={this.flipToFront}>
+                    {this.state.item.title}
                     <br />
                     <input type="checkbox" className={classes.backCheckbox}></input>
                 </BackSide>
