@@ -7,21 +7,28 @@ import Help from '@material-ui/icons/Help'
 
 const styles = theme => ({
     tile: {
-        width: 125,
-        height: 125,
+        width: '12.5vh',
+        height: '12.5vh',
         border: '3px solid black',
         margin: '.25em',
         padding: 0,
         backgroundColor: 'white',
         borderRadius: '5px',
     },
-    qMark: {
+    frontNumBackground: {
         position: 'absolute',
-        left: '10px',
-        top: '10px',
-        height: 100,
-        width: 100,
-        color: '#008ec3'
+        left: '.75vh',
+        top: '.75vh',
+        height: '10vh',
+        width: '10vh',
+        backgroundColor: '#008ec3',
+        borderRadius: 250,
+    },
+    frontNumText: {
+        display: 'flex',
+        color: 'white',
+        justifyContent: 'center',
+        fontSize: '7vh',
     }
 })
 
@@ -48,7 +55,9 @@ class Tile extends Component {
                 ref={(r) => this.flippy = r} // to use toggle method like this.flippy.toggle()
             >
                 <FrontSide className={classes.tile}>
-                    <Help className={classes.qMark} />
+                    <div className={classes.frontNumBackground}>
+                        <span className={classes.frontNumText}>x</span>
+                    </div>
                 </FrontSide>
                 <BackSide className={classes.tile}>
                     {this.props.children}
