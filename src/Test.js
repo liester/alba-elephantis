@@ -5,23 +5,23 @@ class Test extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            myArray : ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-
+            myArray : ['a', 'b', 'c', 'd', 'e', 'f', 'g'],
         }
     }
 
-    randomNumber = (max) => {
+    randomNumber = () => {
+        let num = this.state.myArray.length;
         let min = Math.ceil(0);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+        let max = Math.floor(num);
+        let arrayNum = Math.floor(Math.random() * (max - min + 1)) + min;
+        return this.state.myArray[arrayNum];
     }
 
     render(){
 
         return (
             <div>
-                <div>{this.state.myArray[3]}</div>
-                <span>{this.randomNumber(3)}</span>
+                <span>{this.randomNumber()}</span>
             </div>
         )
     }

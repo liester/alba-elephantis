@@ -1,21 +1,18 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import Tile from './Tile'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import classnames from 'classnames'
-import Flippy, {FrontSide, BackSide} from 'react-flippy'
-import Help from '@material-ui/icons/Help'
 import Test from './Test'
 
 const styles = theme => ({
     board: {
-       backgroundColor: 'skyblue',
-       padding: 0,
-       minHeight: '99vh',
-       maxHeight: '100%',
-       display: 'flex',
-       flexWrap: 'wrap',
-       justifyContent: 'center',
+        backgroundColor: 'skyblue',
+        padding: 0,
+        minHeight: '99vh',
+        maxHeight: '100%',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'center',
     }
 })
 
@@ -23,409 +20,110 @@ class Board extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            tiles: [
-                {
-                    id: 1,
-                    title: "XBox One X"
-                },
-                {
-                    id: 2,
-                    title: "Bucket of Nacho Cheese"
-                },
-                {
-                    id: 3,
-                    title: "Clock"
-                },
-                {
-                    id: 4,
-                    title: "Goat"
-                },
-                {
-                    id: 5,
-                    title: "Hat"
-                },
-                {
-                    id: 6,
-                    title: "Horse"
-                },
-                {
-                    id: 7,
-                    title: "Dog"
-                },
-                {
-                    id: 8,
-                    title: "Watch"
-                },
-                {
-                    id: 9,
-                    title: "Milk"
-                },
-                {
-                    id: 10,
-                    title: "Bread"
-                },
-                {
-                    id: 11,
-                    title: "Butter"
-                },
-                {
-                    id: 12,
-                    title: "Jelly"
-                },
-                {
-                    id: 13,
-                    title: "Fish"
-                },
-                {
-                    id: 14,
-                    title: "Pork"
-                },
-                {
-                    id: 15,
-                    title: "Hat"
-                },
-                {
-                    id: 16,
-                    title: "Red"
-                },
-                {
-                    id: 17,
-                    title: "Green"
-                },
-                {
-                    id: 18,
-                    title: "Yellow"
-                },
-                {
-                    id: 19,
-                    title: "Brown"
-                },
-                {
-                    id: 20,
-                    title: "Orange"
-                },
-                {
-                    id: 21,
-                    title: "XBox One X"
-                },
-                {
-                    id: 22,
-                    title: "Bucket of Nacho Cheese"
-                },
-                {
-                    id: 23,
-                    title: "Clock"
-                },
-                {
-                    id: 24,
-                    title: "Goat"
-                },
-                {
-                    id: 25,
-                    title: "Hat"
-                },
-                {
-                    id: 26,
-                    title: "Horse"
-                },
-                {
-                    id: 27,
-                    title: "Dog"
-                },
-                {
-                    id: 28,
-                    title: "Watch"
-                },
-                {
-                    id: 29,
-                    title: "Milk"
-                },
-                {
-                    id: 30,
-                    title: "Bread"
-                },
-                {
-                    id: 31,
-                    title: "Butter"
-                },
-                {
-                    id: 32,
-                    title: "Jelly"
-                },
-                {
-                    id: 33,
-                    title: "Fish"
-                },
-                {
-                    id: 34,
-                    title: "Pork"
-                },
-                {
-                    id: 35,
-                    title: "Hat"
-                },
-                {
-                    id: 36,
-                    title: "Red"
-                },
-                {
-                    id: 37,
-                    title: "Green"
-                },
-                {
-                    id: 38,
-                    title: "Yellow"
-                },
-                {
-                    id: 39,
-                    title: "Brown"
-                },
-                {
-                    id: 40,
-                    title: "Orange"
-                },
-                {
-                    id: 41,
-                    title: "XBox One X"
-                },
-                {
-                    id: 42,
-                    title: "Bucket of Nacho Cheese"
-                },
-                {
-                    id: 43,
-                    title: "Clock"
-                },
-                {
-                    id: 44,
-                    title: "Goat"
-                },
-                {
-                    id: 45,
-                    title: "Hat"
-                },
-                {
-                    id: 46,
-                    title: "Horse"
-                },
-                {
-                    id: 47,
-                    title: "Dog"
-                },
-                {
-                    id: 48,
-                    title: "Watch"
-                },
-                {
-                    id: 49,
-                    title: "Milk"
-                },
-                {
-                    id: 50,
-                    title: "Bread"
-                },
-                {
-                    id: 51,
-                    title: "XBox One X"
-                },
-                {
-                    id: 52,
-                    title: "Bucket of Nacho Cheese"
-                },
-                {
-                    id: 53,
-                    title: "Clock"
-                },
-                {
-                    id: 54,
-                    title: "Goat"
-                },
-                {
-                    id: 55,
-                    title: "Hat"
-                },
-                {
-                    id: 56,
-                    title: "Horse"
-                },
-                {
-                    id: 57,
-                    title: "Dog"
-                },
-                {
-                    id: 58,
-                    title: "Watch"
-                },
-                {
-                    id: 59,
-                    title: "Milk"
-                },
-                {
-                    id: 60,
-                    title: "Bread"
-                },
-                {
-                    id: 61,
-                    title: "XBox One X"
-                },
-                {
-                    id: 62,
-                    title: "Bucket of Nacho Cheese"
-                },
-                {
-                    id: 63,
-                    title: "Clock"
-                },
-                {
-                    id: 64,
-                    title: "Goat"
-                },
-                {
-                    id: 65,
-                    title: "Hat"
-                },
-                {
-                    id: 66,
-                    title: "Horse"
-                },
-                {
-                    id: 67,
-                    title: "Dog"
-                },
-                {
-                    id: 68,
-                    title: "Watch"
-                },
-                {
-                    id: 69,
-                    title: "Milk"
-                },
-                {
-                    id: 70,
-                    title: "Bread"
-                },
-                {
-                    id: 71,
-                    title: "XBox One X"
-                },
-                {
-                    id: 72,
-                    title: "Bucket of Nacho Cheese"
-                },
-                {
-                    id: 73,
-                    title: "Clock"
-                },
-                {
-                    id: 74,
-                    title: "Goat"
-                },
-                {
-                    id: 75,
-                    title: "Hat"
-                },
-                {
-                    id: 76,
-                    title: "Horse"
-                },
-                {
-                    id: 77,
-                    title: "Dog"
-                },
-                {
-                    id: 78,
-                    title: "Watch"
-                },
-                {
-                    id: 79,
-                    title: "Milk"
-                },
-                {
-                    id: 80,
-                    title: "Bread"
-                },
-                {
-                    id: 81,
-                    title: "XBox One X"
-                },
-                {
-                    id: 82,
-                    title: "Bucket of Nacho Cheese"
-                },
-                {
-                    id: 83,
-                    title: "Clock"
-                },
-                {
-                    id: 84,
-                    title: "Goat"
-                },
-                {
-                    id: 85,
-                    title: "Hat"
-                },
-                {
-                    id: 86,
-                    title: "Horse"
-                },
-                {
-                    id: 87,
-                    title: "Dog"
-                },
-                {
-                    id: 88,
-                    title: "Watch"
-                },
-                {
-                    id: 89,
-                    title: "Milk"
-                },
-                {
-                    id: 90,
-                    title: "Bread"
-                },
-                {
-                    id: 91,
-                    title: "XBox One X"
-                },
-                {
-                    id: 92,
-                    title: "Bucket of Nacho Cheese"
-                },
-                {
-                    id: 93,
-                    title: "Clock"
-                },
-                {
-                    id: 94,
-                    title: "Goat"
-                },
-                {
-                    id: 95,
-                    title: "Hat"
-                },
-                {
-                    id: 96,
-                    title: "Horse"
-                },
-                {
-                    id: 97,
-                    title: "Dog"
-                },
-                {
-                    id: 98,
-                    title: "Watch"
-                },
-                {
-                    id: 99,
-                    title: "Milk"
-                },
-                {
-                    id: 100,
-                    title: "Bread"
-                },
-            ]
+            tiles: [{ id: 1, title: 'item:1' },
+            { id: 2, title: 'item:2' },
+            { id: 3, title: 'item:3' },
+            { id: 4, title: 'item:4' },
+            { id: 5, title: 'item:5' },
+            { id: 6, title: 'item:6' },
+            { id: 7, title: 'item:7' },
+            { id: 8, title: 'item:8' },
+            { id: 9, title: 'item:9' },
+            { id: 10, title: 'item:10' },
+            { id: 11, title: 'item:11' },
+            { id: 12, title: 'item:12' },
+            { id: 13, title: 'item:13' },
+            { id: 14, title: 'item:14' },
+            { id: 15, title: 'item:15' },
+            { id: 16, title: 'item:16' },
+            { id: 17, title: 'item:17' },
+            { id: 18, title: 'item:18' },
+            { id: 19, title: 'item:19' },
+            { id: 20, title: 'item:20' },
+            { id: 21, title: 'item:21' },
+            { id: 22, title: 'item:22' },
+            { id: 23, title: 'item:23' },
+            { id: 24, title: 'item:24' },
+            { id: 25, title: 'item:25' },
+            { id: 26, title: 'item:26' },
+            { id: 27, title: 'item:27' },
+            { id: 28, title: 'item:28' },
+            { id: 29, title: 'item:29' },
+            { id: 30, title: 'item:30' },
+            { id: 31, title: 'item:31' },
+            { id: 32, title: 'item:32' },
+            { id: 33, title: 'item:33' },
+            { id: 34, title: 'item:34' },
+            { id: 35, title: 'item:35' },
+            { id: 36, title: 'item:36' },
+            { id: 37, title: 'item:37' },
+            { id: 38, title: 'item:38' },
+            { id: 39, title: 'item:39' },
+            { id: 40, title: 'item:40' },
+            { id: 41, title: 'item:41' },
+            { id: 42, title: 'item:42' },
+            { id: 43, title: 'item:43' },
+            { id: 44, title: 'item:44' },
+            { id: 45, title: 'item:45' },
+            { id: 46, title: 'item:46' },
+            { id: 47, title: 'item:47' },
+            { id: 48, title: 'item:48' },
+            { id: 49, title: 'item:49' },
+            { id: 50, title: 'item:50' },
+            { id: 51, title: 'item:51' },
+            { id: 52, title: 'item:52' },
+            { id: 53, title: 'item:53' },
+            { id: 54, title: 'item:54' },
+            { id: 55, title: 'item:55' },
+            { id: 56, title: 'item:56' },
+            { id: 57, title: 'item:57' },
+            { id: 58, title: 'item:58' },
+            { id: 59, title: 'item:59' },
+            { id: 60, title: 'item:60' },
+            { id: 61, title: 'item:61' },
+            { id: 62, title: 'item:62' },
+            { id: 63, title: 'item:63' },
+            { id: 64, title: 'item:64' },
+            { id: 65, title: 'item:65' },
+            { id: 66, title: 'item:66' },
+            { id: 67, title: 'item:67' },
+            { id: 68, title: 'item:68' },
+            { id: 69, title: 'item:69' },
+            { id: 70, title: 'item:70' },
+            { id: 71, title: 'item:71' },
+            { id: 72, title: 'item:72' },
+            { id: 73, title: 'item:73' },
+            { id: 74, title: 'item:74' },
+            { id: 75, title: 'item:75' },
+            { id: 76, title: 'item:76' },
+            { id: 77, title: 'item:77' },
+            { id: 78, title: 'item:78' },
+            { id: 79, title: 'item:79' },
+            { id: 80, title: 'item:80' },
+            { id: 81, title: 'item:81' },
+            { id: 82, title: 'item:82' },
+            { id: 83, title: 'item:83' },
+            { id: 84, title: 'item:84' },
+            { id: 85, title: 'item:85' },
+            { id: 86, title: 'item:86' },
+            { id: 87, title: 'item:87' },
+            { id: 88, title: 'item:88' },
+            { id: 89, title: 'item:89' },
+            { id: 90, title: 'item:90' },
+            { id: 91, title: 'item:91' },
+            { id: 92, title: 'item:92' },
+            { id: 93, title: 'item:93' },
+            { id: 94, title: 'item:94' },
+            { id: 95, title: 'item:95' },
+            { id: 96, title: 'item:96' },
+            { id: 97, title: 'item:97' },
+            { id: 98, title: 'item:98' },
+            { id: 99, title: 'item:99' },
+            { id: 100, title: 'item:100' }],
+            tileNum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,
+                51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100]
         }
+
     }
 
     static propTypes = {
@@ -435,27 +133,28 @@ class Board extends Component {
 
     eachTile = (tile, i) => {
         return (
-            <Tile key={i}
-                    index={i}>
-                    {tile.title}
-            </Tile>
+            <Tile key={i}></Tile>
         )
     }
 
-    numberTile = () => {
-        return
+    getItem = () => {
+        let max = this.state.tileNum.length;
+        let arrayNum = Math.floor(Math.random() * (max));
+        const item = this.state.tiles.find(item => item.id == arrayNum);
+        console.log(item)
+        return item;
     }
-    
+
     render() {
 
         const { classes } = this.props;
 
-        
+
 
         return (
             <div>
                 <div className={classes.board}>
-                    {this.state.tiles.map(this.eachTile)}
+                   {this.state.tiles.map(this.eachTile)}
                 </div>
                 <Test></Test>
             </div>

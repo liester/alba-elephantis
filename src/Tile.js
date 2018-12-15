@@ -27,7 +27,7 @@ const styles = theme => ({
         color: 'white',
         justifyContent: 'center',
         alignContent: 'center',
-        fontSize: '7vh',
+        fontSize: '6vh',
         cursor: 'pointer',
     },
     backCheckbox: {
@@ -43,13 +43,9 @@ class Tile extends Component {
         item: PropTypes.object.isRequired,
         classes: PropTypes.object.isRequired,
     };
-    
-    testClass = () => {
-        alert('go')
-    }
 
-    stopFlippy = () => {
-        Flippy.flipOnClick = false
+    increaseCardNum = () => {
+
     }
     
     render() {
@@ -65,11 +61,11 @@ class Tile extends Component {
             >
                 <FrontSide className={classes.tile}>
                     <div className={classes.frontNumBackground}>
-                        <span className={classes.frontNumText}>x</span>
+                        <span className={classes.frontNumText}>{this.props.index + 1}</span>
                     </div>
                 </FrontSide>
                 <BackSide className={classes.tile}>
-                    {this.props.children}
+                    {this.props.title}
                     <br />
                     <input type="checkbox" className={classes.backCheckbox}></input>
                 </BackSide>
