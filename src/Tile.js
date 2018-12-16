@@ -5,8 +5,8 @@ import Flippy, {FrontSide, BackSide} from 'react-flippy'
 
 const styles = theme => ({
   tile: {
-    width: '12.5vh',
-    height: '12.5vh',
+    width: '15vh',
+    height: '15vh',
     border: '3px solid black',
     margin: '.25em',
     padding: '20px',
@@ -15,8 +15,8 @@ const styles = theme => ({
   },
   frontNumBackground: {
     position: 'absolute',
-    left: '.75vh',
-    top: '.75vh',
+    left: '1.9vh',
+    top: '1.9vh',
     height: '10vh',
     width: '10vh',
     backgroundColor: '#008ec3',
@@ -32,6 +32,7 @@ const styles = theme => ({
   },
   backTitleText: {
     display: 'flex',
+    fontSize: '15px',
     justifyContent: 'center',
     alignItems: 'center',
     color: 'black',
@@ -39,12 +40,14 @@ const styles = theme => ({
     fontWeight: 'bold',
   },
   flipButton: {
-    width: '95%',
-    bottom: '0px',
-    alignSelf: 'auto',
-    height: '30%'
+    width: '50%',
+    bottom: '15px',
+    alignSelf: 'center',
+    height: '30%',
+    position: 'absolute',
+    marginLeft: '14px'
   }
-})
+});
 
 class Tile extends Component {
     constructor(props) {
@@ -67,7 +70,7 @@ class Tile extends Component {
             isFlipped: true,
             item: item
         })
-    }
+    };
 
     flipToFront = () => {
         console.log(`Returning index: ${this.state.item.index}`)
@@ -75,7 +78,7 @@ class Tile extends Component {
         this.setState({
             isFlipped: false
         })
-    }
+    };
 
 
 
@@ -94,7 +97,9 @@ class Tile extends Component {
             </div>
           </FrontSide>
           <BackSide className={classes.tile}>
+            <div className={classes.backTitleText}>
             {this.state.item.title}
+            </div>
             <br/>
             <br/>
             <input type="button" className={classes.flipButton}

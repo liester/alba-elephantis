@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Tile from './Tile'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import itemsJson from './fiftyItems.json'
+import itemsJson from './oneHundredItems.json'
 
 const styles = theme => ({
     board: {
