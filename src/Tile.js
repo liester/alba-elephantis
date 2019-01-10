@@ -5,34 +5,42 @@ import Flippy, {FrontSide, BackSide} from 'react-flippy'
 
 const styles = theme => ({
   tile: {
-    width: '15vh',
-    height: '15vh',
+    height: '120px',
+    width: '120px',
     border: '3px solid black',
     margin: '.25em',
     padding: '20px',
     backgroundColor: 'white',
     borderRadius: '10px'
   },
+  tileRed: {
+    height: '120px',
+    width: '120px',
+    border: '3px solid black',
+    margin: '.25em',
+    padding: '20px',
+    background: 'radial-gradient(red,pink)',
+    borderRadius: '10px'
+  },
   frontNumBackground: {
     position: 'absolute',
-    left: '1.9vh',
-    top: '1.9vh',
-    height: '10vh',
-    width: '10vh',
-    backgroundColor: '#008ec3',
+    left: '7px',
+    top: '7px',
+    height: '100px',
+    width: '100px',
+    backgroundColor: '#0C1FA3',
     borderRadius: 250,
   },
   frontNumText: {
-    display: 'flex',
+    textAlign: 'center',
+    marginTop: '.25em',
     color: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: '6vh',
+    fontSize: '50px',
     cursor: 'pointer',
   },
   backTitleText: {
     display: 'flex',
-    fontSize: '15px',
+    fontSize: '13px',
     justifyContent: 'center',
     alignItems: 'center',
     color: 'black',
@@ -41,12 +49,21 @@ const styles = theme => ({
   },
   flipButton: {
     width: '50%',
-    bottom: '15px',
+    bottom: '10px',
     alignSelf: 'center',
-    height: '30%',
+    height: '1.5em',
     position: 'absolute',
-    marginLeft: '14px'
-  }
+    left: '28px'
+  },
+  backTitleTextRed: {
+    display: 'flex',
+    fontSize: '20px',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
 });
 
 class Tile extends Component {
@@ -54,7 +71,8 @@ class Tile extends Component {
         super(props)
         this.state = {
             isFlipped: false,
-            item: {}
+            item: {},
+            isStealCard: false
         }
     }
 
@@ -93,11 +111,12 @@ class Tile extends Component {
         >
           <FrontSide className={classes.tile} onClick={this.flipToBack}>
             <div className={classes.frontNumBackground}>
-              <span className={classes.frontNumText}>{label}</span>
+              <div className={classes.frontNumText}>{label}</div>
             </div>
           </FrontSide>
-          <BackSide className={classes.tile}>
-            <div className={classes.backTitleText}>
+          <BackSide className={this.state.item.id === 99 ? classes.tileRed : classes.tile}>
+            <div className={this.state.item.id === 99 ? classes.backTitleTextRed : classes.backTitleText}>
+            {/* <div className={classes.backTitleText}> */}
             {this.state.item.title}
             </div>
             <br/>
