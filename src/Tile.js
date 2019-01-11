@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import Flippy, {FrontSide, BackSide} from 'react-flippy'
+import Lock from '@material-ui/icons/Lock';
 
 const styles = theme => ({
   tile: {
@@ -40,7 +41,7 @@ const styles = theme => ({
   },
   backTitleText: {
     display: 'flex',
-    fontSize: '13px',
+    fontSize: '12px',
     justifyContent: 'center',
     alignItems: 'center',
     color: 'black',
@@ -64,6 +65,20 @@ const styles = theme => ({
     textAlign: 'center',
     fontWeight: 'bold',
   },
+  lockClosed: {
+    position: 'absolute',
+    top: '3px',
+    right: '-2px',
+    height: '20px',
+    color: 'red',
+  },
+  lockOpened: {
+    position: 'absolute',
+    top: '3px',
+    right: '-2px',
+    height: '20px',
+    color: 'green',
+  },
 });
 
 class Tile extends Component {
@@ -72,7 +87,8 @@ class Tile extends Component {
         this.state = {
             isFlipped: false,
             item: {},
-            isStealCard: false
+            isStealCard: false,
+            isLocked: true,
         }
     }
 
@@ -94,9 +110,29 @@ class Tile extends Component {
         console.log(`Returning index: ${this.state.item.index}`)
         this.props.returnItem(this.state.item.index);
         this.setState({
-            isFlipped: false
+            isFlipped: false,
+            isLocked: true
         })
     };
+
+    doNothing = () => {
+
+    }
+
+    unlockLock = () => {
+      console.log('clicked unlock');
+      this.setState({
+        isLocked: false
+      })
+      console.log(this.state.isLocked);
+    }
+
+    lockLock = () => {
+      console.log('is locked');
+      this.setState({
+        isLocked: true
+      })
+    }
 
 
 
@@ -116,13 +152,13 @@ class Tile extends Component {
           </FrontSide>
           <BackSide className={this.state.item.id === 99 ? classes.tileRed : classes.tile}>
             <div className={this.state.item.id === 99 ? classes.backTitleTextRed : classes.backTitleText}>
-            {/* <div className={classes.backTitleText}> */}
             {this.state.item.title}
             </div>
             <br/>
             <br/>
             <input type="button" className={classes.flipButton}
-                   onClick={() => this.flipToFront()} value="Flip Me"/>
+                   onClick={this.state.isLocked ? () => this.doNothing() : () => this.flipToFront()} value="Flip Me"/>
+            <Lock className={this.state.isLocked ? classes.lockClosed : classes.lockOpened} onClick= {this.state.isLocked === true ? this.unlockLock: this.lockLock}/>
           </BackSide>
         </Flippy>
     )
